@@ -1,135 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fauzi Joned - Professional Profile</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 48px;
-            font-weight: bold;
-        }
-        h1 {
-            color: #2d3748;
-            margin-bottom: 10px;
-            font-size: 2.5rem;
-        }
-        .title {
-            color: #718096;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-        .bio {
-            color: #4a5568;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-        .gallery {
-            margin-top: 30px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        .gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        .contact {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .btn {
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-        footer {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TamanGuard - Residential Management</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header { text-align: center; color: white; padding: 40px 0; }
+    header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    header p { font-size: 1.2rem; opacity: 0.9; }
+    .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+    .card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease; }
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { color: #667eea; margin-bottom: 15px; font-size: 1.3rem; }
+    .card p { color: #666; line-height: 1.6; }
+    .card .stat { font-size: 2rem; font-weight: bold; color: #764ba2; margin: 10px 0; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
+    .feature { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 10px; padding: 20px; text-align: center; color: white; }
+    .feature-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    footer { text-align: center; color: white; margin-top: 50px; padding: 20px; opacity: 0.8; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="avatar">FJ</div>
-            <h1>Fauzi Joned</h1>
-            <p class="title">Professional</p>
-            <p class="bio">
-                Welcome to my professional profile. I am dedicated to excellence 
-                and committed to delivering quality work in all my endeavors.
-            </p>
-            
-            <h3 style="color: #2d3748; margin-bottom: 15px;">Offshore Operations</h3>
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1596484552993-9c595070c9d8?auto=format&fit=crop&w=400&q=80" alt="Offshore Platform">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=80" alt="Engineering Work">
-                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=400&q=80" alt="Oil and Gas Facility">
-            </div>
-
-            <div class="contact">
-                <a href="mailto:contact@example.com" class="btn btn-primary">Contact Me</a>
-            </div>
-        </div>
+  <div class="container">
+    <header>
+      <h1>🏡 TamanGuard</h1>
+      <p>Residential Area Management System</p>
+    </header>
+    
+    <div class="dashboard">
+      <div class="card">
+        <h3>👥 Residents</h3>
+        <div class="stat">156</div>
+        <p>Active households registered in the community</p>
+      </div>
+      <div class="card">
+        <h3>🚗 Vehicles</h3>
+        <div class="stat">89</div>
+        <p>Registered vehicles with access permits</p>
+      </div>
+      <div class="card">
+        <h3>📦 Deliveries</h3>
+        <div class="stat">24</div>
+        <p>Pending deliveries at the guardhouse today</p>
+      </div>
+      <div class="card">
+        <h3>⚠️ Reports</h3>
+        <div class="stat">3</div>
+        <p>Open maintenance or security reports</p>
+      </div>
     </div>
+    
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🔐</div>
+        <h4>Access Control</h4>
+        <p>Manage resident & visitor access</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h4>Announcements</h4>
+        <p>Community notices & updates</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔧</div>
+        <h4>Maintenance</h4>
+        <p>Report & track facility issues</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💰</div>
+        <h4>Payments</h4>
+        <p>Association fee management</p>
+      </div>
+    </div>
+    
     <footer>
-        <p>&copy; 2026 Fauzi Joned. All rights reserved.</p>
+      <p>&copy; 2025 TamanGuard Residential Management. All rights reserved.</p>
     </footer>
+  </div>
 </body>
 </html>
