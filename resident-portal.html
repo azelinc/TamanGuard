@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Portal - TamanGuard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links a:hover {
+            color: #667eea;
+        }
+        .navbar .nav-links a.active {
+            color: #667eea;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .portal-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .portal-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .card-header .icon {
+            font-size: 2rem;
+        }
+        .card-header h3 {
+            font-size: 1.3rem;
+        }
+        .card-body {
+            padding: 25px;
+        }
+        .mockup-container {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #e2e8f0;
+        }
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .mockup-header h4 {
+            color: #2d3748;
+            font-size: 1rem;
+        }
+        .mockup-content {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 150px;
+        }
+        .announcement-item {
+            background: #edf2f7;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+        }
+        .announcement-item .title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+        .announcement-item .date {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+        .announcement-item .message {
+            color: #4a5568;
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+        .chat-message {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .chat-message .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .chat-message .content {
+            flex: 1;
+        }
+        .chat-message .sender {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+        .chat-message .text {
+            background: #edf2f7;
+            padding: 10px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            color: #4a5568;
+        }
+        .chat-message .time {
+            font-size: 0.75rem;
+            color: #a0aec0;
+            margin-top: 3px;
+        }
+        .chat-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 0.95rem;
+        }
+        .chat-input button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .feature-list {
+            list-style: none;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4a5568;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list .check {
+            color: #48bb78;
+            font-weight: bold;
+        }
+        .btn-portal {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-portal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-item {
+            background: #edf2f7;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 5px;
+        }
+        .payment-card {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .payment-card .amount {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .payment-card .due-date {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        .back-link:hover {
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">🏠 TamanGuard</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="resident-portal.html" class="active">Resident Portal</a>
+            <a href="#">Login</a>
+        </div>
+    </nav>
+
+    <a href="index.html" class="back-link" style="text-align: center; display: block;">← Back to Home</a>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Resident Portal</h1>
+            <p>Your gateway to community living - Connect, Communicate, Collaborate</p>
+        </div>
+
+        <div class="portal-grid">
+            <!-- Announcements Card -->
+            <div class="portal-card">
+                <div class="card-header">
+                    <span class="icon">📢</span>
+                    <h3>Community Announcements</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <h4>Latest Announcements</h4>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="announcement-item">
+                                <div class="title">🔧 Scheduled Maintenance</div>
+                                <div class="date">December 15, 2026</div>
+                                <div class="message">Water supply will be temporarily interrupted from 9 AM to 2 PM for pipe maintenance.</div>
+                            </div>
+                            <div class="announcement-item">
+                                <div class="title">🎄 Year-End Celebration</div>
+                                <div class="date">December 10, 2026</div>
+                                <div class="message">Join us for the community year-end gathering at the main hall on Dec 28th.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li><span class="check">✓</span> Real-time updates from management</li>
+                        <li><span class="check">✓</span> Emergency notifications</li>
+                        <li><span class="check">✓</span> Event calendars</li>
+                        <li><span class="check">✓</span> Important reminders</li>
+                    </ul>
+                    <a href="#" class="btn-portal" style="margin-top: 15px;">View All Announcements</a>
+                </div>
+            </div>
+
+            <!-- Community Chat Card -->
+            <div class="portal-card">
+                <div class="card-header">
+                    <span class="icon">💬</span>
+                    <h3>Community Chat</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <h4>Resident Group Chat</h4>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="chat-message">
+                                <div class="avatar">AK</div>
+                                <div class="content">
+                                    <div class="sender">Azly Khalid</div>
+                                    <div class="text">Has anyone received the latest maintenance fee statement?</div>
+                                    <div class="time">10:32 AM</div>
+                                </div>
+                            </div>
+                            <div class="chat-message">
+                                <div class="avatar" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">SN</div>
+                                <div class="content">
+                                    <div class="sender">Sarah Nur</div>
+                                    <div class="text">Yes, got it yesterday via email. Check your spam folder just in case!</div>
+                                    <div class="time">10:45 AM</div>
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" placeholder="Type a message...">
+                                <button>Send</button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li><span class="check">✓</span> Connect with neighbors</li>
+                        <li><span class="check">✓</span> Share community updates</li>
+                        <li><span class="check">✓</span> Private messaging available</li>
+                        <li><span class="check">✓</span> Moderated discussions</li>
+                    </ul>
+                    <a href="#" class="btn-portal" style="margin-top: 15px;">Join Chat</a>
+                </div>
+            </div>
+
+            <!-- Payments & Finance Card -->
+            <div class="portal-card">
+                <div class="card-header">
+                    <span class="icon">💳</span>
+                    <h3>Payments & Finance</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <h4>Payment Overview</h4>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="payment-card">
+                                <div>Outstanding Balance</div>
+                                <div class="amount">RM 150.00</div>
+                                <div class="due-date">Due: January 5, 2027</div>
+                            </div>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="number">12</div>
+                                    <div class="label">Paid Months</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="number">0</div>
+                                    <div class="label">Late Fees</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="number">✓</div>
+                                    <div class="label">Status</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li><span class="check">✓</span> Online payment gateway</li>
+                        <li><span class="check">✓</span> Payment history tracking</li>
+                        <li><span class="check">✓</span> Auto-payment setup</li>
+                        <li><span class="check">✓</span> Receipt downloads</li>
+                    </ul>
+                    <a href="#" class="btn-portal" style="margin-top: 15px;">Make Payment</a>
+                </div>
+            </div>
+
+            <!-- Services & Requests Card -->
+            <div class="portal-card">
+                <div class="card-header">
+                    <span class="icon">🔧</span>
+                    <h3>Services & Requests</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <h4>Recent Requests</h4>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="announcement-item" style="border-left-color: #48bb78;">
+                                <div class="title">✅ Gate Access Card Request</div>
+                                <div class="date">Submitted: Dec 10, 2026</div>
+                                <div class="message">Status: Approved - Card ready for collection</div>
+                            </div>
+                            <div class="announcement-item" style="border-left-color: #ed8936;">
+                                <div class="title">⏳ Parking Permit Renewal</div>
+                                <div class="date">Submitted: Dec 12, 2026</div>
+                                <div class="message">Status: Pending Review</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li><span class="check">✓</span> Submit maintenance requests</li>
+                        <li><span class="check">✓</span> Track request status</li>
+                        <li><span class="check">✓</span> Book community facilities</li>
+                        <li><span class="check">✓</span> Visitor registration</li>
+                    </ul>
+                    <a href="#" class="btn-portal" style="margin-top: 15px;">Submit New Request</a>
+                </div>
+            </div>
+
+            <!-- Documents & Resources Card -->
+            <div class="portal-card">
+                <div class="card-header">
+                    <span class="icon">📄</span>
+                    <h3>Documents & Resources</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <h4>Quick Access</h4>
+                        </div>
+                        <div class="mockup-content">
+                            <ul class="feature-list">
+                                <li><span style="color: #667eea;">📕</span> Resident Handbook</li>
+                                <li><span style="color: #667eea;">📋</span> House Rules & Regulations</li>
+                                <li><span style="color: #667eea;">📊</span> Monthly Financial Report</li>
+                                <li><span style="color: #667eea;">📝</span> Meeting Minutes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li><span class="check">✓</span> Download important forms</li>
+                        <li><span class="check">✓</span> Access community bylaws</li>
+                        <li><span class="check">✓</span> View meeting records</li>
+                        <li><span class="check">✓</span> Emergency contacts</li>
+                    </ul>
+                    <a href="#" class="btn-portal" style="margin-top: 15px;">Browse Documents</a>
+                </div>
+            </div>
+
+            <!-- Security & Access Card -->
+            <div class="portal-card">
+                <div class="card-header">
+                    <span class="icon">🔒</span>
+                    <h3>Security & Access</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <h4>Access Control</h4>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="number">4</div>
+                                    <div class="label">Active Cards</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="number">2</div>
+                                    <div class="label">Vehicles</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="number">0</div>
+                                    <div class="label">Violations</div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 15px; background: #edf2f7; border-radius: 8px;">
+                                <div style="font-weight: 600; color: #2d3748; margin-bottom: 5px;">🚪 Main Gate Status</div>
+                                <div style="color: #48bb78; font-weight: 600;">● Operational</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li><span class="check">✓</span> Manage access cards</li>
+                        <li><span class="check">✓</span> Register visitors</li>
+                        <li><span class="check">✓</span> Report security concerns</li>
+                        <li><span class="check">✓</span> CCTV access requests</li>
+                    </ul>
+                    <a href="#" class="btn-portal" style="margin-top: 15px;">Manage Access</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 TamanGuard. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Resident Portal - Secure Access for Community Members</p>
+    </footer>
+</body>
+</html>
