@@ -65,6 +65,22 @@
             padding: 25px;
             border-radius: 10px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .feature.clickable {
+            cursor: pointer;
+        }
+        .feature.clickable:hover {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        .feature.clickable:hover h3,
+        .feature.clickable:hover p,
+        .feature.clickable:hover .feature-icon {
+            color: white;
         }
         .feature-icon {
             font-size: 35px;
@@ -138,10 +154,6 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
-        .btn-portal {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            margin-top: 20px;
-        }
         .form-status {
             text-align: center;
             padding: 10px;
@@ -166,6 +178,11 @@
             margin-top: 30px;
             font-size: 0.9rem;
         }
+        a.feature-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -183,11 +200,13 @@
                     <h3>Property Management</h3>
                     <p>Streamlined residential oversight</p>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">👥</div>
-                    <h3>Resident Portal</h3>
-                    <p>Community engagement tools</p>
-                </div>
+                <a href="resident-portal.html" class="feature-link">
+                    <div class="feature clickable">
+                        <div class="feature-icon">👥</div>
+                        <h3>Resident Portal</h3>
+                        <p>Community engagement tools</p>
+                    </div>
+                </a>
                 <div class="feature">
                     <div class="feature-icon">🔒</div>
                     <h3>Security</h3>
@@ -198,10 +217,6 @@
                     <h3>Reports</h3>
                     <p>Transparent financial tracking</p>
                 </div>
-            </div>
-
-            <div style="text-align: center;">
-                <a href="resident-portal.html" class="btn btn-portal"> Access Resident Portal</a>
             </div>
 
             <div class="contact-section">
