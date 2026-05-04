@@ -3,51 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TamanGuard</title>
+    <title>TamanGuard - Residential Management</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fff; color: #000; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { border-bottom: 1px solid #000; padding: 20px 0; }
-        h1 { font-size: 1.5rem; font-weight: 600; }
-        nav { margin-top: 15px; }
-        nav a { color: #000; text-decoration: none; margin-right: 20px; font-size: 0.9rem; }
-        nav a:hover { text-decoration: underline; }
-        main { padding: 40px 0; }
-        .card { border: 1px solid #000; padding: 20px; margin-bottom: 20px; }
-        .card h2 { font-size: 1.2rem; margin-bottom: 10px; }
-        footer { border-top: 1px solid #000; padding: 20px 0; text-align: center; font-size: 0.8rem; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background: #f5f5f5; }
+        header { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 2rem; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        nav { background: #34495e; padding: 1rem; }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; }
+        nav a:hover { color: #3498db; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .feature-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .feature-card h3 { color: #2c3e50; margin-bottom: 1rem; }
+        .cta { background: #3498db; color: white; padding: 3rem; text-align: center; border-radius: 8px; margin: 2rem 0; }
+        .btn { display: inline-block; background: #27ae60; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem; margin-top: 2rem; }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>TamanGuard</h1>
-            <nav>
-                <a href="#">Home</a>
-                <a href="#">Residents</a>
-                <a href="#">Visitors</a>
-                <a href="#">Security</a>
-                <a href="#">Settings</a>
-            </nav>
-        </div>
+        <h1>TamanGuard</h1>
+        <p>Your Trusted Residential Management Solution</p>
     </header>
-    <main>
-        <div class="container">
-            <div class="card">
-                <h2>Welcome to TamanGuard</h2>
-                <p>Residential Management System</p>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section class="features">
+            <div class="feature-card">
+                <h3>Security Management</h3>
+                <p>24/7 monitoring and access control for your residential community.</p>
             </div>
-            <div class="card">
-                <h2>Quick Actions</h2>
-                <p>Manage residents, visitors, and security access.</p>
+            <div class="feature-card">
+                <h3>Maintenance Requests</h3>
+                <p>Easy submission and tracking of maintenance issues.</p>
             </div>
+            <div class="feature-card">
+                <h3>Community Portal</h3>
+                <p>Connect with neighbors and stay updated on community news.</p>
+            </div>
+        </section>
+        <div class="cta">
+            <h2>Ready to Get Started?</h2>
+            <p>Join TamanGuard today and experience seamless residential management.</p>
+            <a href="#contact" class="btn">Contact Us</a>
         </div>
-    </main>
+    </div>
     <footer>
-        <div class="container">
-            <p>&copy; 2026 TamanGuard. All rights reserved.</p>
-        </div>
+        <p>&copy; 2024 TamanGuard. All rights reserved.</p>
     </footer>
 </body>
 </html>
