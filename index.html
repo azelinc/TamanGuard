@@ -3,61 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TamanGuard - Residential Management</title>
+    <title>Fauzi Joned - Professional Profile</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background: #f5f5f5; }
-        header { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 2rem; text-align: center; }
-        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        nav { background: #34495e; padding: 1rem; }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; }
-        nav a { color: white; text-decoration: none; font-weight: 500; }
-        nav a:hover { color: #3498db; }
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
-        .feature-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .feature-card h3 { color: #2c3e50; margin-bottom: 1rem; }
-        .cta { background: #3498db; color: white; padding: 3rem; text-align: center; border-radius: 8px; margin: 2rem 0; }
-        .btn { display: inline-block; background: #27ae60; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 2rem; margin-top: 2rem; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        .title {
+            color: #718096;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .bio {
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>TamanGuard</h1>
-        <p>Your Trusted Residential Management Solution</p>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
     <div class="container">
-        <section class="features">
-            <div class="feature-card">
-                <h3>Security Management</h3>
-                <p>24/7 monitoring and access control for your residential community.</p>
+        <div class="card">
+            <div class="avatar">FJ</div>
+            <h1>Fauzi Joned</h1>
+            <p class="title">Professional</p>
+            <p class="bio">
+                Welcome to my professional profile. I am dedicated to excellence 
+                and committed to delivering quality work in all my endeavors.
+            </p>
+            <div class="contact">
+                <a href="mailto:contact@example.com" class="btn btn-primary">Contact Me</a>
             </div>
-            <div class="feature-card">
-                <h3>Maintenance Requests</h3>
-                <p>Easy submission and tracking of maintenance issues.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Community Portal</h3>
-                <p>Connect with neighbors and stay updated on community news.</p>
-            </div>
-        </section>
-        <div class="cta">
-            <h2>Ready to Get Started?</h2>
-            <p>Join TamanGuard today and experience seamless residential management.</p>
-            <a href="#contact" class="btn">Contact Us</a>
         </div>
     </div>
     <footer>
-        <p>&copy; 2024 TamanGuard. All rights reserved.</p>
+        <p>&copy; 2026 Fauzi Joned. All rights reserved.</p>
     </footer>
 </body>
 </html>
