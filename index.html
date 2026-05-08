@@ -14,6 +14,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            /* Background gradient matches the purple container */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
@@ -22,68 +23,89 @@
             margin: 0 auto;
             padding: 40px 20px;
         }
+        
+        /* The main outer purple/gradient container */
         .card {
-            background: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden; /* Important for the full-bleed banner */
+            overflow: hidden; /* Clips the banner image */
+            display: flex;
+            flex-direction: column;
         }
         
-        /* --- NEW BANNER STYLES --- */
+        /* The header section with the background image */
         .banner-header {
             width: 100%;
-            height: 300px; /* Adjust height as needed */
-            background-color: #f7fafc; /* Fallback color */
+            /* Fixed height to contain the full asset, adjusted for full view */
+            height: 380px; 
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border-bottom: 2px solid #e2e8f0;
+            position: relative;
         }
         .banner-header img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Important to fill space and scale well */
+            /* Contain ensures the full image is visible without being cut off */
+            object-fit: contain; 
             display: block;
         }
-        /* -------------------------- */
         
-        .content-body {
-            padding: 40px;
-            text-align: center;
+        /* Centralised area for the tagline button to prevent cutoff */
+        .tagline-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 25px; /* Space between tagline and white box */
+            margin-top: -30px; /* Slight tuck under the image, but not a big overlap */
+            z-index: 5;
         }
-        h1 {
-            color: #2d3748;
-            margin-bottom: 10px;
-            font-size: 2.8rem;
-        }
-        .subtitle {
-            color: #718096;
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+
         .tagline {
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
             padding: 10px 25px;
             border-radius: 25px;
-            display: inline-block;
-            margin-top: 20px;
             font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            white-space: nowrap; /* Keeps tagline on one line */
         }
-        .section-title {
+        
+        /* The main content area in white */
+        .content-body {
+            background: #fdfdff;
+            padding: 50px 40px;
+            border-radius: 12px 12px 0 0; /* Rounded top for the card look */
+            /* REMOVED: negative margin-top. We are using regular flow. */
+            width: 95%; /* Sits inside the purple box slightly */
+            margin: 0 auto; /* Center naturally */
+            z-index: 1;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Fixed text alignment for list and grid items to restore readability */
+        .content-body .text-aligned {
+            text-align: left;
+        }
+
+        .main-section-title {
             text-align: center;
             color: #2d3748;
-            margin: 50px 0 30px;
-            font-size: 2rem;
+            margin: 0 0 50px; /* Space before benefits */
+            font-size: 2.2rem;
+            font-weight: 700;
         }
+
         .benefits {
             background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
             padding: 40px;
             border-radius: 12px;
             margin: 40px 0;
-            text-align: left; /* Reset alignment for benefit items */
         }
         .benefits h2 {
             text-align: center;
@@ -110,7 +132,6 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 40px 0;
-            text-align: left; /* Reset alignment */
         }
         .solution-card {
             background: white;
@@ -158,7 +179,6 @@
             gap: 15px;
             max-width: 600px;
             margin: 20px auto 0;
-            text-align: left; /* Reset form text alignment */
         }
         .form-group {
             display: flex;
@@ -201,13 +221,24 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            text-align: left; /* Reset alignment */
         }
         .testimonial-card {
             background: white;
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .author-box {
+            display: block;
+            margin-top: 15px;
+        }
+        .testimonial-author {
+            color: #2d3748;
+            font-weight: 600;
+        }
+        .testimonial-role {
+            color: #718096;
+            font-size: 0.9rem;
         }
         .cta-section {
             text-align: center;
@@ -223,9 +254,10 @@
             font-size: 0.9rem;
         }
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .banner-header { height: 200px; } /* Slightly smaller for mobile */
-            .content-body { padding: 20px; }
+            .banner-header { height: 250px; } /* Slightly smaller for mobile */
+            .tagline { padding: 8px 15px; font-size: 0.85rem; }
+            .content-body { padding: 30px 20px; }
+            .main-section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -233,16 +265,17 @@
     <div class="container">
         <div class="card">
             <div class="banner-header">
-                <img src="/banner.jpg" alt="TamanGuard Banner">
+                <img src="/banner.jpg" alt="TamanGuard Banner Image showing houses and logo">
+            </div>
+            
+            <div class="tagline-container">
+                <div class="tagline">Empowering Communities Through Technology</div>
             </div>
             
             <div class="content-body">
-                <h1>TamanGuard</h1>
-                <p class="subtitle">Comprehensive Residential Association (RA) Management Solutions</p>
-                <div class="tagline">Empowering Communities Through Technology</div>
+                <h2 class="main-section-title">Why Choose TamanGuard?</h2>
                 
-                <h2 class="section-title">Why Choose TamanGuard?</h2>
-                <div class="benefits">
+                <div class="benefits text-aligned">
                     <h2>Transform Your RA Management</h2>
                     <div class="benefits-grid">
                         <div class="benefit-item"><span class="benefit-check">✓</span><p>Reduce administrative workload by up to 70%</p></div>
@@ -254,8 +287,7 @@
                     </div>
                 </div>
 
-                <h2 class="section-title">Our Solutions</h2>
-                <div class="solutions-showcase">
+                <div class="solutions-showcase text-aligned">
                     <div class="solution-card">
                         <h3>🏠 Property Management</h3>
                         <ul>
@@ -282,18 +314,22 @@
                     </div>
                 </div>
 
-                <div class="testimonials">
+                <div class="testimonials text-aligned">
                     <h2>What Our Clients Say</h2>
                     <div class="testimonial-grid">
                         <div class="testimonial-card">
                             <p>"TamanGuard transformed how we manage our units. Fee collection improved by 40%."</p>
-                            <p class="author">Puan Siti Aminah</p>
-                            <p class="role">Chairman, Taman Seri Indah RA</p>
+                            <span class="author-box">
+                                <p class="testimonial-author">Puan Siti Aminah</p>
+                                <p class="testimonial-role">Chairman, Taman Seri Indah RA</p>
+                            </span>
                         </div>
                         <div class="testimonial-card">
                             <p>"Residents love the transparency and quick response times via the portal."</p>
-                            <p class="author">Encik Rahman Abdullah</p>
-                            <p class="role">Property Manager, Desa Heights</p>
+                            <span class="author-box">
+                                <p class="testimonial-author">Encik Rahman Abdullah</p>
+                                <p class="testimonial-role">Property Manager, Desa Heights</p>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -306,7 +342,7 @@
 
                 <div class="contact-section" id="contact">
                     <h2>Get In Touch</h2>
-                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xykoewvk" method="POST">
+                    <form id="contactForm" class="contact-form text-aligned" action="https://formspree.io/f/xykoewvk" method="POST">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required>
@@ -320,7 +356,7 @@
                             <textarea id="message" name="message" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
-                        <div id="formStatus" style="margin-top:15px; text-align:center;"></div>
+                        <div id="formStatus" style="margin-top:15px; text-align:center; color: white;"></div>
                     </form>
                 </div>
             </div>
