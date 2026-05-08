@@ -32,19 +32,29 @@
             text-align: center;
             margin-bottom: 50px;
         }
+
+        /* --- LOGO FIXES START --- */
         .logo {
             width: 120px;
             height: 120px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: white;
             border-radius: 50%;
             margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 60px;
-            font-weight: bold;
+            overflow: hidden; /* Clips image to circle */
+            border: 3px solid #667eea;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fills circle without distortion */
+            display: block;
+        }
+        /* --- LOGO FIXES END --- */
+
         h1 {
             color: #2d3748;
             margin-bottom: 15px;
@@ -71,38 +81,6 @@
             margin: 50px 0 30px;
             font-size: 2rem;
         }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        .feature {
-            background: #f7fafc;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .feature:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-        .feature-icon {
-            font-size: 45px;
-            margin-bottom: 20px;
-        }
-        .feature h3 {
-            color: #2d3748;
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-        }
-        .feature p {
-            color: #718096;
-            font-size: 0.95rem;
-        }
         .benefits {
             background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
             padding: 40px;
@@ -128,10 +106,6 @@
             color: #38ef7d;
             font-size: 24px;
             font-weight: bold;
-        }
-        .benefit-item p {
-            color: #4a5568;
-            font-size: 1rem;
         }
         .solutions-showcase {
             display: grid;
@@ -165,9 +139,6 @@
             padding: 8px 0;
             border-bottom: 1px solid #e2e8f0;
         }
-        .solution-card li:last-child {
-            border-bottom: none;
-        }
         .solution-card li:before {
             content: "✓ ";
             color: #667eea;
@@ -180,49 +151,28 @@
             margin-top: 40px;
             color: white;
         }
-        .contact-section h2 {
+        .contact-section h2, .contact-section p {
             text-align: center;
-            margin-bottom: 15px;
-        }
-        .contact-section p {
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0.9;
         }
         .contact-form {
             display: grid;
             gap: 15px;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 20px auto 0;
         }
         .form-group {
             display: flex;
             flex-direction: column;
         }
         .form-group label {
-            color: white;
             margin-bottom: 5px;
             font-weight: 600;
         }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            padding: 12px 15px;
-            border: 2px solid rgba(255,255,255,0.3);
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 12px;
             border-radius: 8px;
-            font-size: 1rem;
+            border: none;
             background: rgba(255,255,255,0.9);
-            transition: border-color 0.3s ease;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: white;
-        }
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
         }
         .btn {
             display: inline-block;
@@ -231,43 +181,21 @@
             color: #667eea;
             border: none;
             border-radius: 8px;
-            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-align: center;
             text-decoration: none;
+            transition: 0.3s;
         }
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .form-status {
-            text-align: center;
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 8px;
-            display: none;
-            color: #2d3748;
-        }
-        .form-status.success {
-            background: #c6f6d5;
-            display: block;
-        }
-        .form-status.error {
-            background: #fed7d7;
-            display: block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         .testimonials {
             background: #f7fafc;
             padding: 40px;
             border-radius: 12px;
             margin: 40px 0;
-        }
-        .testimonials h2 {
-            text-align: center;
-            color: #2d3748;
-            margin-bottom: 30px;
         }
         .testimonial-grid {
             display: grid;
@@ -280,61 +208,22 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .testimonial-card p {
-            color: #4a5568;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-        .testimonial-card .author {
-            color: #2d3748;
-            font-weight: 600;
-        }
-        .testimonial-card .role {
-            color: #718096;
-            font-size: 0.9rem;
-        }
         .cta-section {
             text-align: center;
             padding: 40px;
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             border-radius: 12px;
-            margin: 40px 0;
             color: white;
-        }
-        .cta-section h2 {
-            margin-bottom: 15px;
-        }
-        .cta-section p {
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-        .cta-section .btn {
-            background: white;
-            color: #11998e;
         }
         footer {
             text-align: center;
             color: white;
             padding: 30px;
-            margin-top: 40px;
             font-size: 0.9rem;
         }
-        footer a {
-            color: white;
-            text-decoration: underline;
-        }
         @media (max-width: 768px) {
-            .card {
-                padding: 30px 20px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .logo {
-                width: 100px;
-                height: 100px;
-                font-size: 50px;
-            }
+            h1 { font-size: 2rem; }
+            .logo { width: 100px; height: 100px; }
         }
     </style>
 </head>
@@ -342,9 +231,9 @@
     <div class="container">
         <div class="card">
             <div class="header">
-              <div class="logo">
-    <img src="/banner.jpg" alt="Company Logo">
-</div>
+                <div class="logo">
+                    <img src="/banner.jpg" alt="TamanGuard Logo">
+                </div>
                 <h1>TamanGuard</h1>
                 <p class="subtitle">Complete Residential Association (RA) Management Solutions</p>
                 <div class="tagline">Empowering Communities Through Technology</div>
@@ -354,30 +243,12 @@
             <div class="benefits">
                 <h2>Transform Your RA Management</h2>
                 <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <span class="benefit-check">✓</span>
-                        <p>Reduce administrative workload by up to 70%</p>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-check">✓</span>
-                        <p>Improve fee collection rates significantly</p>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-check">✓</span>
-                        <p>Enhance resident engagement & satisfaction</p>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-check">✓</span>
-                        <p>Real-time transparency & reporting</p>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-check">✓</span>
-                        <p>Secure cloud-based platform</p>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-check">✓</span>
-                        <p>Dedicated local support team</p>
-                    </div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Reduce administrative workload by up to 70%</p></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Improve fee collection rates significantly</p></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Enhance resident engagement & satisfaction</p></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Real-time transparency & reporting</p></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Secure cloud-based platform</p></div>
+                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Dedicated local support team</p></div>
                 </div>
             </div>
 
@@ -388,9 +259,7 @@
                     <ul>
                         <li>Unit & resident database</li>
                         <li>Document storage & retrieval</li>
-                        <li>Compliance tracking</li>
                         <li>Vendor management</li>
-                        <li>Asset maintenance logs</li>
                     </ul>
                 </div>
                 <div class="solution-card">
@@ -398,9 +267,7 @@
                     <ul>
                         <li>Mobile & web access</li>
                         <li>Community announcements</li>
-                        <li>In-app messaging & chat</li>
                         <li>Feedback & complaint system</li>
-                        <li>Event management</li>
                     </ul>
                 </div>
                 <div class="solution-card">
@@ -409,38 +276,6 @@
                         <li>Automated fee collection</li>
                         <li>Payment gateway integration</li>
                         <li>Financial reporting</li>
-                        <li>Budget tracking</li>
-                        <li>Audit-ready statements</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <h3>🔒 Security & Access</h3>
-                    <ul>
-                        <li>Visitor management system</li>
-                        <li>QR code entry passes</li>
-                        <li>Security incident logging</li>
-                        <li>CCTV integration ready</li>
-                        <li>Emergency alerts</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <h3>🔧 Maintenance Hub</h3>
-                    <ul>
-                        <li>Work order management</li>
-                        <li>Request tracking</li>
-                        <li>Contractor coordination</li>
-                        <li>Preventive maintenance</li>
-                        <li>Photo documentation</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <h3>📊 Analytics & Reports</h3>
-                    <ul>
-                        <li>Real-time dashboards</li>
-                        <li>Collection rate analytics</li>
-                        <li>Resident engagement metrics</li>
-                        <li>Custom report builder</li>
-                        <li>Export to Excel/PDF</li>
                     </ul>
                 </div>
             </div>
@@ -449,113 +284,71 @@
                 <h2>What Our Clients Say</h2>
                 <div class="testimonial-grid">
                     <div class="testimonial-card">
-                        <p>"TamanGuard transformed how we manage our 500-unit development. Fee collection improved by 40% in just 3 months."</p>
+                        <p>"TamanGuard transformed how we manage our units. Fee collection improved by 40%."</p>
                         <p class="author">Puan Siti Aminah</p>
                         <p class="role">Chairman, Taman Seri Indah RA</p>
                     </div>
                     <div class="testimonial-card">
-                        <p>"The resident portal has greatly improved communication. Residents love the transparency and quick response times."</p>
+                        <p>"Residents love the transparency and quick response times via the portal."</p>
                         <p class="author">Encik Rahman Abdullah</p>
                         <p class="role">Property Manager, Desa Heights</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"Finally, a solution built for Malaysian RAs. Local support understands our unique challenges and regulations."</p>
-                        <p class="author">Ms. Jennifer Tan</p>
-                        <p class="role">Secretary, Bukit Cempaka RA</p>
                     </div>
                 </div>
             </div>
 
             <div class="cta-section">
                 <h2>Ready to Modernize Your RA?</h2>
-                <p>Get a free consultation and demo. No obligation, just solutions tailored for your community.</p>
+                <p>Get a free consultation and demo tailored for your community.</p>
                 <a href="#contact" class="btn">Request Free Demo</a>
             </div>
 
             <div class="contact-section" id="contact">
                 <h2>Get In Touch</h2>
-                <p>Leave your details and we'll contact you within 24 hours</p>
                 <form id="contactForm" class="contact-form" action="https://formspree.io/f/xykoewvk" method="POST">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="organization">RA / Organization Name</label>
-                        <input type="text" id="organization" name="organization" placeholder="Your RA or organization name">
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-                    </div>
-                    <div class="form-group">
-                        <label for="interest">Interested In</label>
-                        <select id="interest" name="interest">
-                            <option value="">Select a solution</option>
-                            <option value="full-suite">Full Suite</option>
-                            <option value="property-mgmt">Property Management</option>
-                            <option value="resident-portal">Resident Portal</option>
-                            <option value="financial">Financial Management</option>
-                            <option value="security">Security & Access</option>
-                            <option value="maintenance">Maintenance Hub</option>
-                        </select>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your needs..." required></textarea>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="btn">Request Consultation</button>
-                    <div id="formStatus" class="form-status"></div>
+                    <button type="submit" class="btn">Send Message</button>
+                    <div id="formStatus" style="margin-top:15px; text-align:center;"></div>
                 </form>
             </div>
         </div>
     </div>
     <footer>
-        <p>&copy; 2026 TamanGuard Solutions. All rights reserved.</p>
-        <p>Building smarter communities across Malaysia</p>
+        <p>&copy; 2026 TamanGuard Solutions. Building smarter communities across Malaysia.</p>
     </footer>
 
     <script>
         const form = document.getElementById('contactForm');
-        const formStatus = document.getElementById('formStatus');
+        const status = document.getElementById('formStatus');
 
-        form.addEventListener('submit', async function(e) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const formData = new FormData(form);
-            
+            const data = new FormData(form);
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
                 });
-
                 if (response.ok) {
-                    formStatus.textContent = 'Thank you! We will contact you within 24 hours.';
-                    formStatus.className = 'form-status success';
+                    status.innerHTML = "Success! We'll be in touch.";
                     form.reset();
                 } else {
-                    formStatus.textContent = 'Oops! There was a problem. Please try again or call us directly.';
-                    formStatus.className = 'form-status error';
+                    status.innerHTML = "Submission failed. Please try again.";
                 }
-            } catch (error) {
-                formStatus.textContent = 'Oops! There was a problem. Please try again or call us directly.';
-                formStatus.className = 'form-status error';
+            } catch (err) {
+                status.innerHTML = "Error connecting to server.";
             }
-        });
-
-        // Smooth scroll for CTA button
-        document.querySelector('.cta-section .btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector('#contact').scrollIntoView({
-                behavior: 'smooth'
-            });
         });
     </script>
 </body>
