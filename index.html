@@ -25,39 +25,36 @@
         .card {
             background: white;
             border-radius: 15px;
-            padding: 50px 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden; /* Important for the full-bleed banner */
         }
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        /* --- LOGO FIXES START --- */
-        .logo {
-            width: 120px;
-            height: 120px;
-            background: white;
-            border-radius: 50%;
-            margin: 0 auto 25px;
+        
+        /* --- NEW BANNER STYLES --- */
+        .banner-header {
+            width: 100%;
+            height: 300px; /* Adjust height as needed */
+            background-color: #f7fafc; /* Fallback color */
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Clips image to circle */
-            border: 3px solid #667eea;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-bottom: 2px solid #e2e8f0;
         }
-        .logo img {
+        .banner-header img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures image fills circle without distortion */
+            object-fit: cover; /* Important to fill space and scale well */
             display: block;
         }
-        /* --- LOGO FIXES END --- */
-
+        /* -------------------------- */
+        
+        .content-body {
+            padding: 40px;
+            text-align: center;
+        }
         h1 {
             color: #2d3748;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-size: 2.8rem;
         }
         .subtitle {
@@ -86,6 +83,7 @@
             padding: 40px;
             border-radius: 12px;
             margin: 40px 0;
+            text-align: left; /* Reset alignment for benefit items */
         }
         .benefits h2 {
             text-align: center;
@@ -112,6 +110,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 40px 0;
+            text-align: left; /* Reset alignment */
         }
         .solution-card {
             background: white;
@@ -159,6 +158,7 @@
             gap: 15px;
             max-width: 600px;
             margin: 20px auto 0;
+            text-align: left; /* Reset form text alignment */
         }
         .form-group {
             display: flex;
@@ -201,6 +201,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
+            text-align: left; /* Reset alignment */
         }
         .testimonial-card {
             background: white;
@@ -223,103 +224,105 @@
         }
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
-            .logo { width: 100px; height: 100px; }
+            .banner-header { height: 200px; } /* Slightly smaller for mobile */
+            .content-body { padding: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <div class="header">
-                <div class="logo">
-                    <img src="/banner.jpg" alt="TamanGuard Logo">
-                </div>
+            <div class="banner-header">
+                <img src="/banner.jpg" alt="TamanGuard Banner">
+            </div>
+            
+            <div class="content-body">
                 <h1>TamanGuard</h1>
-                <p class="subtitle">Complete Residential Association (RA) Management Solutions</p>
+                <p class="subtitle">Comprehensive Residential Association (RA) Management Solutions</p>
                 <div class="tagline">Empowering Communities Through Technology</div>
-            </div>
-
-            <h2 class="section-title">Why Choose TamanGuard?</h2>
-            <div class="benefits">
-                <h2>Transform Your RA Management</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Reduce administrative workload by up to 70%</p></div>
-                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Improve fee collection rates significantly</p></div>
-                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Enhance resident engagement & satisfaction</p></div>
-                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Real-time transparency & reporting</p></div>
-                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Secure cloud-based platform</p></div>
-                    <div class="benefit-item"><span class="benefit-check">✓</span><p>Dedicated local support team</p></div>
-                </div>
-            </div>
-
-            <h2 class="section-title">Our Solutions</h2>
-            <div class="solutions-showcase">
-                <div class="solution-card">
-                    <h3>🏠 Property Management</h3>
-                    <ul>
-                        <li>Unit & resident database</li>
-                        <li>Document storage & retrieval</li>
-                        <li>Vendor management</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <h3>👥 Resident Portal</h3>
-                    <ul>
-                        <li>Mobile & web access</li>
-                        <li>Community announcements</li>
-                        <li>Feedback & complaint system</li>
-                    </ul>
-                </div>
-                <div class="solution-card">
-                    <h3>💰 Financial Management</h3>
-                    <ul>
-                        <li>Automated fee collection</li>
-                        <li>Payment gateway integration</li>
-                        <li>Financial reporting</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="testimonials">
-                <h2>What Our Clients Say</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p>"TamanGuard transformed how we manage our units. Fee collection improved by 40%."</p>
-                        <p class="author">Puan Siti Aminah</p>
-                        <p class="role">Chairman, Taman Seri Indah RA</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <p>"Residents love the transparency and quick response times via the portal."</p>
-                        <p class="author">Encik Rahman Abdullah</p>
-                        <p class="role">Property Manager, Desa Heights</p>
+                
+                <h2 class="section-title">Why Choose TamanGuard?</h2>
+                <div class="benefits">
+                    <h2>Transform Your RA Management</h2>
+                    <div class="benefits-grid">
+                        <div class="benefit-item"><span class="benefit-check">✓</span><p>Reduce administrative workload by up to 70%</p></div>
+                        <div class="benefit-item"><span class="benefit-check">✓</span><p>Improve fee collection rates significantly</p></div>
+                        <div class="benefit-item"><span class="benefit-check">✓</span><p>Enhance resident engagement & satisfaction</p></div>
+                        <div class="benefit-item"><span class="benefit-check">✓</span><p>Real-time transparency & reporting</p></div>
+                        <div class="benefit-item"><span class="benefit-check">✓</span><p>Secure cloud-based platform</p></div>
+                        <div class="benefit-item"><span class="benefit-check">✓</span><p>Dedicated local support team</p></div>
                     </div>
                 </div>
-            </div>
 
-            <div class="cta-section">
-                <h2>Ready to Modernize Your RA?</h2>
-                <p>Get a free consultation and demo tailored for your community.</p>
-                <a href="#contact" class="btn">Request Free Demo</a>
-            </div>
+                <h2 class="section-title">Our Solutions</h2>
+                <div class="solutions-showcase">
+                    <div class="solution-card">
+                        <h3>🏠 Property Management</h3>
+                        <ul>
+                            <li>Unit & resident database</li>
+                            <li>Document storage & retrieval</li>
+                            <li>Vendor management</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>👥 Resident Portal</h3>
+                        <ul>
+                            <li>Mobile & web access</li>
+                            <li>Community announcements</li>
+                            <li>Feedback & complaint system</li>
+                        </ul>
+                    </div>
+                    <div class="solution-card">
+                        <h3>💰 Financial Management</h3>
+                        <ul>
+                            <li>Automated fee collection</li>
+                            <li>Payment gateway integration</li>
+                            <li>Financial reporting</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <div class="contact-section" id="contact">
-                <h2>Get In Touch</h2>
-                <form id="contactForm" class="contact-form" action="https://formspree.io/f/xykoewvk" method="POST">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
+                <div class="testimonials">
+                    <h2>What Our Clients Say</h2>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <p>"TamanGuard transformed how we manage our units. Fee collection improved by 40%."</p>
+                            <p class="author">Puan Siti Aminah</p>
+                            <p class="role">Chairman, Taman Seri Indah RA</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"Residents love the transparency and quick response times via the portal."</p>
+                            <p class="author">Encik Rahman Abdullah</p>
+                            <p class="role">Property Manager, Desa Heights</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                    <div id="formStatus" style="margin-top:15px; text-align:center;"></div>
-                </form>
+                </div>
+
+                <div class="cta-section">
+                    <h2>Ready to Modernize Your RA?</h2>
+                    <p>Get a free consultation and demo tailored for your community.</p>
+                    <a href="#contact" class="btn">Request Free Demo</a>
+                </div>
+
+                <div class="contact-section" id="contact">
+                    <h2>Get In Touch</h2>
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xykoewvk" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                        <div id="formStatus" style="margin-top:15px; text-align:center;"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
